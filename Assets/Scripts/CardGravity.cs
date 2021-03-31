@@ -4,10 +4,11 @@ public class CardGravity : MonoBehaviour
 {
     [SerializeField] private float swingSpeed;
 
-    public CardIndividuality cardIndividuality;
+    public CardInteractionManager cardIndividuality;
 
     private Vector3 offset;
     private Vector3 defaultPosition;
+    private float zRotation;
     private bool isCardAtDefaultPosition = true;
     private bool isChoiceLeft;
 
@@ -34,7 +35,7 @@ public class CardGravity : MonoBehaviour
     {
         Vector3 desiredPosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f);
 
-        float zRotation = Mathf.Abs(transform.position.x * 5.5f);
+        zRotation = Mathf.Abs(transform.position.x * 6.5f);
         zRotation = SetDirectionOfRotation(zRotation);
         Quaternion desiredIncline = Quaternion.Euler(transform.position.x, transform.position.y, zRotation);
 
@@ -47,7 +48,8 @@ public class CardGravity : MonoBehaviour
     {
         isCardAtDefaultPosition = true;
 
-        cardIndividuality.ConfirmChoice(isChoiceLeft);
+        if (Mathf.Abs(zRotation) >= 7.5f)
+            cardIndividuality.ConfirmChoice(isChoiceLeft);
     }
 
     private void ReturnToDefaultPosition()

@@ -1,27 +1,29 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CardIndividuality : MonoBehaviour
+public class CardInteractionManager : MonoBehaviour
 {
     private DeckManager deckManager;
+    [SerializeField] private CardSetUpManager cardSetUpManager;
 
-    [SerializeField] public Text leftSwipeChoice, rightSwipeChoice;
-    [SerializeField] private Text description;
-    [SerializeField] private Text speakerName;
-    [SerializeField] private ChangedIndicatorsInfo leftChoice;
-    [SerializeField] private ChangedIndicatorsInfo rightChoice;
+    public Text leftSwipeChoice, rightSwipeChoice;
+    public Text description;
+    public Text speakerName;
 
     private void Start()
     {
         deckManager = DeckManager.Instance;
+
+        cardSetUpManager = deckManager.GetRandomCardSetUp();
+        cardSetUpManager.SetUpCard(this);
     }
 
     public void ConfirmChoice(bool isChoiceLeft)
     {
         if (isChoiceLeft)
-            deckManager.SetFillersOfIndicators(leftChoice);
+            deckManager.SetFillersOfIndicators(cardSetUpManager.leftChoice);
         else
-            deckManager.SetFillersOfIndicators(rightChoice);
+            deckManager.SetFillersOfIndicators(cardSetUpManager.rightChoice);
     }
 
     public void ChangeUIVisibility(float degreeOfVisibility)
@@ -47,6 +49,6 @@ public class CardIndividuality : MonoBehaviour
 
     private void ChangeIndicatorsVisibility(float degreeOfVisibility)
     {
-        deckManager.SetChangeSignOfIndicators(degreeOfVisibility, leftChoice, rightChoice);
+        deckManager.SetChangeSignOfIndicators(degreeOfVisibility, cardSetUpManager.leftChoice, cardSetUpManager.rightChoice);
     }
 }

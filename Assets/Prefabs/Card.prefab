@@ -1,5 +1,42 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &172251183587728134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7704894414044800167}
+  m_Layer: 5
+  m_Name: Choices
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7704894414044800167
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172251183587728134}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3822728193677224987}
+  - {fileID: 3822728192850759466}
+  m_Father: {fileID: 3822728193922417605}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3822728192365979235
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,8 +147,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3822728192850759466}
-  - {fileID: 3822728193677224987}
+  - {fileID: 7704894414044800167}
   m_Father: {fileID: 3822728193914700768}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -196,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0958f4d64fb4539419049fe4de171ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swingSpeed: 6
+  swingSpeed: 7
   cardIndividuality: {fileID: 5784355058667748430}
 --- !u!1 &3822728192850759465
 GameObject:
@@ -209,7 +245,6 @@ GameObject:
   - component: {fileID: 3822728192850759466}
   - component: {fileID: 3822728192850759460}
   - component: {fileID: 3822728192850759467}
-  - component: {fileID: 2727381964110520424}
   m_Layer: 5
   m_Name: LeftSwipeChoice
   m_TagString: Untagged
@@ -228,8 +263,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3822728193922417605}
-  m_RootOrder: 0
+  m_Father: {fileID: 7704894414044800167}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -278,20 +313,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &2727381964110520424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3822728192850759465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 104acb388c94a234b8f7950980faf01c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indicatorsWhichChanged: 
-  statesOfChangedIndicators: 
 --- !u!1 &3822728193367763966
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +403,6 @@ GameObject:
   - component: {fileID: 3822728193677224987}
   - component: {fileID: 3822728193677224981}
   - component: {fileID: 3822728193677224980}
-  - component: {fileID: 2822352203365666048}
   m_Layer: 5
   m_Name: RightSwipeChoice
   m_TagString: Untagged
@@ -401,8 +421,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3822728193922417605}
-  m_RootOrder: 1
+  m_Father: {fileID: 7704894414044800167}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -451,20 +471,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
---- !u!114 &2822352203365666048
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3822728193677224986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 104acb388c94a234b8f7950980faf01c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  indicatorsWhichChanged: 
-  statesOfChangedIndicators: 
 --- !u!1 &3822728193914700775
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,9 +522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15047e93748ba4a43990fe52682cc564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardSetUpManager: {fileID: 0}
   leftSwipeChoice: {fileID: 3822728192850759467}
   rightSwipeChoice: {fileID: 3822728193677224980}
   description: {fileID: 3822728193367763960}
   speakerName: {fileID: 3822728192365979293}
-  leftChoice: {fileID: 2727381964110520424}
-  rightChoice: {fileID: 2822352203365666048}

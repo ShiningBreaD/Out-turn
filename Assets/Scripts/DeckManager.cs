@@ -5,6 +5,7 @@ public class DeckManager : MonoBehaviour
     public static DeckManager Instance { get; set; }
 
     [SerializeField] private Indicator[] indicators;
+    [SerializeField] private CardSetUpManager[] setUps;
 
     private void Awake()
     {
@@ -15,6 +16,12 @@ public class DeckManager : MonoBehaviour
     }
 
     public enum Indicators { Ecology = 0, Finans = 1, Socium = 2, Collaboration = 3 }
+
+    public CardSetUpManager GetRandomCardSetUp()
+    {
+        int index = Random.Range(0, setUps.Length);
+        return setUps[index];
+    }
 
     public void SetChangeSignOfIndicators(float degreeOfVisibility, ChangedIndicatorsInfo leftChoice, ChangedIndicatorsInfo rightChoice)
     {
