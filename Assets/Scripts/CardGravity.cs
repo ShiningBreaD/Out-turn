@@ -2,9 +2,14 @@
 
 public class CardGravity : MonoBehaviour
 {
+    [SerializeField] private float swingSpeed;
+
+    public CardIndividuality cardIndividuality;
+
     private Vector3 offset;
     private Vector3 defaultPosition;
     private bool isCardAtDefaultPosition = true;
+    private bool isChoiceLeft;
 
     private void Start()
     {
@@ -33,13 +38,16 @@ public class CardGravity : MonoBehaviour
         zRotation = SetDirectionOfRotation(zRotation);
         Quaternion desiredIncline = Quaternion.Euler(transform.position.x, transform.position.y, zRotation);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, desiredIncline, Time.deltaTime * 3);
+        transform.rotation = Quaternion.Lerp(transform.rotation, desiredIncline, Time.deltaTime * swingSpeed);
         transform.position = Camera.main.ScreenToWorldPoint(desiredPosition) + offset;
+        cardIndividuality.ChangeUIVisibility(zRotation / 4);
     }
 
     private void OnMouseUp()
     {
         isCardAtDefaultPosition = true;
+
+        cardIndividuality.ConfirmChoice(isChoiceLeft);
     }
 
     private void ReturnToDefaultPosition()
@@ -48,10 +56,22 @@ public class CardGravity : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, defaultPosition, Time.deltaTime * 6);
         transform.rotation = Quaternion.Lerp(transform.rotation, defaultQuaternion, Time.deltaTime * 6);
+        cardIndividuality.ChangeUIVisibility(0);
     }
 
     private float SetDirectionOfRotation(float rotation)
     {
-        return transform.position.x <= 0 ? rotation : rotation * -1;
+        rotation = transform.position.x <= 0 ? rotation : rotation * -1;
+
+        if (transform.position.x <= 0)
+        {
+            isChoiceLeft = true;
+        }
+        else
+        {
+            isChoiceLeft = false;
+        }
+
+        return rotation;
     }
 }
