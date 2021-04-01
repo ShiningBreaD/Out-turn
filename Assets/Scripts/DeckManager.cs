@@ -5,7 +5,9 @@ public class DeckManager : MonoBehaviour
     public static DeckManager Instance { get; set; }
 
     public TimeState timeState;
-        
+    public GameObject gameOverCard;
+    public GameObject usualCard;
+
     [SerializeField] private Indicator[] indicators;
 
     [SerializeField] private CardSetUpManager[] setUps;

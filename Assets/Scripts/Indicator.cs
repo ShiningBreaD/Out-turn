@@ -36,6 +36,12 @@ public class Indicator : MonoBehaviour
     {
         totalValueOfFiller = filler.fillAmount + addNumber;
         isAnimationRun = true;
+
+        if (totalValueOfFiller <= 0)
+        {
+            DeckManager.Instance.gameOverCard.SetActive(true);
+            DeckManager.Instance.usualCard.SetActive(false);
+        }
     }
 
     private void Animate()

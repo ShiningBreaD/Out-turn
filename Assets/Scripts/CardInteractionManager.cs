@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CardInteractionManager : MonoBehaviour
 {
     private DeckManager deckManager;
     [SerializeField] private CardSetUpManager cardSetUpManager;
+    [SerializeField] private bool isGameOverCard;
 
     public Text leftSwipeChoice, rightSwipeChoice;
     public Text description;
@@ -15,29 +17,39 @@ public class CardInteractionManager : MonoBehaviour
     {
         deckManager = DeckManager.Instance;
 
-        cardSetUpManager = deckManager.GetNextCard();
+        if (!isGameOverCard)
+            cardSetUpManager = deckManager.GetNextCard();
         cardSetUpManager.SetUpCard(this);
     }
 
     public void ConfirmChoice(bool isChoiceLeft)
     {
-        if (isChoiceLeft)
-            deckManager.SetFillersOfIndicators(cardSetUpManager.leftChoice);
+        if (!isGameOverCard)
+        {
+            if (isChoiceLeft)
+                deckManager.SetFillersOfIndicators(cardSetUpManager.leftChoice);
+            else
+                deckManager.SetFillersOfIndicators(cardSetUpManager.rightChoice);
+
+            deckManager.timeState.IncreaseDaysInPower(cardSetUpManager.GetDaysOfExecution());
+
+            cardSetUpManager = deckManager.GetNextCard();
+            cardSetUpManager.SetUpCard(this);
+            deckManager.SetChangeSighOfIndicatorsToZero();
+        }
         else
-            deckManager.SetFillersOfIndicators(cardSetUpManager.rightChoice);
-
-        deckManager.timeState.IncreaseDaysInPower(cardSetUpManager.GetDaysOfExecution());
-
-        cardSetUpManager = deckManager.GetNextCard();
-        cardSetUpManager.SetUpCard(this);
-        deckManager.SetChangeSighOfIndicatorsToZero();
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     public void ChangeUIVisibility(float degreeOfVisibility)
     {
-        ChangeSwipeChoicesVisibility(degreeOfVisibility);
-
-        ChangeIndicatorsVisibility(degreeOfVisibility);
+        if (!isGameOverCard)
+        {
+            ChangeSwipeChoicesVisibility(degreeOfVisibility);
+            ChangeIndicatorsVisibility(degreeOfVisibility);
+        }
     }
 
     private void ChangeSwipeChoicesVisibility(float degreeOfVisibility)
