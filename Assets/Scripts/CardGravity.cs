@@ -4,7 +4,7 @@ public class CardGravity : MonoBehaviour
 {
     [SerializeField] private float swingSpeed;
 
-    public CardInteractionManager cardIndividuality;
+    private CardInteractionManager cardInteractionManager;
 
     private Vector3 offset;
     private Vector3 defaultPosition;
@@ -15,6 +15,8 @@ public class CardGravity : MonoBehaviour
     private void Start()
     {
         defaultPosition = transform.position;
+
+        cardInteractionManager = GetComponentInParent<CardInteractionManager>();
     }
 
     private void Update()
@@ -41,15 +43,15 @@ public class CardGravity : MonoBehaviour
 
         transform.rotation = Quaternion.Lerp(transform.rotation, desiredIncline, Time.deltaTime * swingSpeed);
         transform.position = Camera.main.ScreenToWorldPoint(desiredPosition) + offset;
-        cardIndividuality.ChangeUIVisibility(zRotation / 4);
+        cardInteractionManager.ChangeUIVisibility(zRotation / 4);
     }
 
     private void OnMouseUp()
     {
         isCardDragging = false;
 
-        if (Mathf.Abs(zRotation) >= 7.5f)
-            cardIndividuality.ConfirmChoice(isChoiceLeft);
+        if (Mathf.Abs(zRotation) >= 7.5f) 
+            cardInteractionManager.ConfirmChoice(isChoiceLeft);
     }
 
     private void ReturnToDefaultPosition()
@@ -58,7 +60,7 @@ public class CardGravity : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, defaultPosition, Time.deltaTime * 6);
         transform.rotation = Quaternion.Lerp(transform.rotation, defaultQuaternion, Time.deltaTime * 6);
-        cardIndividuality.ChangeUIVisibility(0);
+        cardInteractionManager.ChangeUIVisibility(0);
     }
 
     private float SetDirectionOfRotation(float rotation)

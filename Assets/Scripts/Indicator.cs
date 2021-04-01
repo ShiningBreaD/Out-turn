@@ -9,7 +9,7 @@ public class Indicator : MonoBehaviour
     private bool isAnimationRun;
     private float totalValueOfFiller;
 
-    public enum changeSignState { small = 0, large = 1 }
+    public enum ChangeSignState { small = 0, large = 1 }
 
     private void Update()
     {
@@ -17,14 +17,19 @@ public class Indicator : MonoBehaviour
             Animate();
     }
 
-    public void SetChangeSign(float degreeOfVisibility, changeSignState state)
+    public void SetChangeSign(float degreeOfVisibility, ChangeSignState state)
     {
         changeSign.color = new Color(changeSign.color.r, changeSign.color.g, changeSign.color.b, Mathf.Abs(degreeOfVisibility));
 
-        if (state == changeSignState.small)
+        if (state == ChangeSignState.small)
             changeSign.transform.localScale = new Vector3(0.6f, 0.6f, 1);
         else
             changeSign.transform.localScale = new Vector3(0.9f, 0.9f, 1);
+    }
+
+    public void SetChangeSignToZero()
+    {
+        changeSign.color = new Color(changeSign.color.r, changeSign.color.g, changeSign.color.b, 0);
     }
 
     public void SetFiller(float addNumber)

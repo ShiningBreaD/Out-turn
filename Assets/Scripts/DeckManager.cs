@@ -26,26 +26,35 @@ public class DeckManager : MonoBehaviour
     public void SetChangeSignOfIndicators(float degreeOfVisibility, ChangedIndicatorsInfo leftChoice, ChangedIndicatorsInfo rightChoice)
     {
         DeckManager.Indicators[] rightIndicators = rightChoice.indicatorsWhichChanged;
-        Indicator.changeSignState[] rightStates = rightChoice.statesOfChangedIndicators;
+        Indicator.ChangeSignState[] rightStates = rightChoice.statesOfChangedIndicators;
 
         DeckManager.Indicators[] leftIndicators = leftChoice.indicatorsWhichChanged;
-        Indicator.changeSignState[] leftStates = leftChoice.statesOfChangedIndicators;
+        Indicator.ChangeSignState[] leftStates = leftChoice.statesOfChangedIndicators;
 
         if (degreeOfVisibility <= 0)
         {
             for (int i = 0; i < rightIndicators.Length; i++)
             {
                 this.indicators[(int)rightIndicators[i]].SetChangeSign(degreeOfVisibility, rightStates[i]);
-                this.indicators[(int)leftIndicators[i]].SetChangeSign(0, leftStates[i]);
             }
+
+            if (degreeOfVisibility < 0)
+                for (int i = 0; i < leftIndicators.Length; i++)
+                    if (leftIndicators[i] != rightIndicators[i])
+                        this.indicators[(int)leftIndicators[i]].SetChangeSign(0, leftStates[i]);
         }
-        else
+
+        if (degreeOfVisibility >= 0)
         {
             for (int i = 0; i < leftIndicators.Length; i++)
             {
                 this.indicators[(int)leftIndicators[i]].SetChangeSign(degreeOfVisibility, leftStates[i]);
-                this.indicators[(int)rightIndicators[i]].SetChangeSign(0, rightStates[i]);
             }
+
+            if (degreeOfVisibility > 0)
+                for (int i = 0; i < rightIndicators.Length; i++)
+                    if (leftIndicators[i] != rightIndicators[i])
+                        this.indicators[(int)rightIndicators[i]].SetChangeSign(0, rightStates[i]);
         }
     }
 
@@ -57,6 +66,14 @@ public class DeckManager : MonoBehaviour
         for (int i = 0; i < indicators.Length; i++)
         {
             this.indicators[(int)indicators[i]].SetFiller(addedNumbers[i]);
+        }
+    }
+
+    public void SetChangeSighOfIndicatorsToZero()
+    {
+        for (int  i = 0; i < indicators.Length; i++)
+        {
+            indicators[i].SetChangeSignToZero();
         }
     }
 }

@@ -3,6 +3,6 @@
 public class ChangedIndicatorsInfo : MonoBehaviour
 {
     public DeckManager.Indicators[] indicatorsWhichChanged;
-    public Indicator.changeSignState[] statesOfChangedIndicators;
+    public Indicator.ChangeSignState[] statesOfChangedIndicators;
     public float[] addedNumbers;
 }

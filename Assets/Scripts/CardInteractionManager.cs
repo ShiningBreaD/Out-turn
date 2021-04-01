@@ -25,6 +25,10 @@ public class CardInteractionManager : MonoBehaviour
             deckManager.SetFillersOfIndicators(cardSetUpManager.leftChoice);
         else
             deckManager.SetFillersOfIndicators(cardSetUpManager.rightChoice);
+
+        cardSetUpManager = deckManager.GetRandomCardSetUp();
+        cardSetUpManager.SetUpCard(this);
+        deckManager.SetChangeSighOfIndicatorsToZero();
     }
 
     public void ChangeUIVisibility(float degreeOfVisibility)
