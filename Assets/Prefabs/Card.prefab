@@ -233,7 +233,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swingSpeed: 7
-  cardIndividuality: {fileID: 5784355058667748430}
 --- !u!1 &3822728192850759465
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,6 +244,7 @@ GameObject:
   - component: {fileID: 3822728192850759466}
   - component: {fileID: 3822728192850759460}
   - component: {fileID: 3822728192850759467}
+  - component: {fileID: 4813323141009463968}
   m_Layer: 5
   m_Name: LeftSwipeChoice
   m_TagString: Untagged
@@ -313,6 +313,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &4813323141009463968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822728192850759465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3822728193367763966
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,6 +418,7 @@ GameObject:
   - component: {fileID: 3822728193677224987}
   - component: {fileID: 3822728193677224981}
   - component: {fileID: 3822728193677224980}
+  - component: {fileID: 8209249877135020594}
   m_Layer: 5
   m_Name: RightSwipeChoice
   m_TagString: Untagged
@@ -471,6 +487,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+--- !u!114 &8209249877135020594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822728193677224986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3822728193914700775
 GameObject:
   m_ObjectHideFlags: 0

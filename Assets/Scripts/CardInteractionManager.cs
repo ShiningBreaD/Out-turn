@@ -15,7 +15,7 @@ public class CardInteractionManager : MonoBehaviour
     {
         deckManager = DeckManager.Instance;
 
-        cardSetUpManager = deckManager.GetRandomCardSetUp();
+        cardSetUpManager = deckManager.GetNextCard();
         cardSetUpManager.SetUpCard(this);
     }
 
@@ -26,7 +26,9 @@ public class CardInteractionManager : MonoBehaviour
         else
             deckManager.SetFillersOfIndicators(cardSetUpManager.rightChoice);
 
-        cardSetUpManager = deckManager.GetRandomCardSetUp();
+        deckManager.timeState.IncreaseDaysInPower(cardSetUpManager.GetDaysOfExecution());
+
+        cardSetUpManager = deckManager.GetNextCard();
         cardSetUpManager.SetUpCard(this);
         deckManager.SetChangeSighOfIndicatorsToZero();
     }

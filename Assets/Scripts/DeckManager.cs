@@ -4,8 +4,12 @@ public class DeckManager : MonoBehaviour
 {
     public static DeckManager Instance { get; set; }
 
+    public TimeState timeState;
+        
     [SerializeField] private Indicator[] indicators;
+
     [SerializeField] private CardSetUpManager[] setUps;
+    private int lastIndex = 0;
 
     private void Awake()
     {
@@ -17,10 +21,15 @@ public class DeckManager : MonoBehaviour
 
     public enum Indicators { Ecology = 0, Finans = 1, Socium = 2, Collaboration = 3 }
 
-    public CardSetUpManager GetRandomCardSetUp()
+    public CardSetUpManager GetNextCard()
     {
-        int index = Random.Range(0, setUps.Length);
-        return setUps[index];
+        CardSetUpManager card = setUps[lastIndex];
+        if (lastIndex < setUps.Length - 1)
+            lastIndex++;
+        else
+            lastIndex = 0;
+
+        return card;
     }
 
     public void SetChangeSignOfIndicators(float degreeOfVisibility, ChangedIndicatorsInfo leftChoice, ChangedIndicatorsInfo rightChoice)

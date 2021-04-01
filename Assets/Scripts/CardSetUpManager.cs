@@ -18,4 +18,6 @@ public class CardSetUpManager : MonoBehaviour
         cardInteractionManager.speakerName.text = speakerName;
         cardInteractionManager.npc.sprite = npc;
     }
+
+    public int GetDaysOfExecution() { return daysOfExecution; }
 }

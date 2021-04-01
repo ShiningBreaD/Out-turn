@@ -1,18 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class TimeState : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int year = 2000;
+    private int daysInPower = 1;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private Text yearUI;
+    [SerializeField] private Text daysInPowerUI;
+
+    private enum TimeType { days = 0, years = 1 }
+
+    public void IncreaseDaysInPower(int addedDays)
     {
-        
+        int addedYears = 0;
+
+        daysInPower += addedDays;
+        addedYears += (daysInPower - addedYears * 365) / 365;
+        year += addedYears;
+
+        yearUI.text = year + "";
+
+        if (addedYears == 1)
+        {
+            daysInPowerUI.text = addedYears + " year and " +  (daysInPower - addedYears * 365) + " days in power";
+            return;
+        }
+        else if (addedYears > 0)
+        {
+            daysInPowerUI.text = addedYears + " years and " + (daysInPower - addedYears * 365) + " days in power";
+        }
+        else
+        {
+            daysInPowerUI.text = daysInPower + " days in power";
+        }
     }
 }
