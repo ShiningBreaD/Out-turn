@@ -25,7 +25,7 @@ public class DeckManager : MonoBehaviour
 
     public void SetChangeSignOfIndicators(float degreeOfVisibility, ChangedIndicatorsInfo leftChoice, ChangedIndicatorsInfo rightChoice)
     {
-        if (degreeOfVisibility <= 0)
+        if (degreeOfVisibility < 0)
         {
             DeckManager.Indicators[] indicators = rightChoice.indicatorsWhichChanged;
             Indicator.changeSignState[] states = rightChoice.statesOfChangedIndicators;

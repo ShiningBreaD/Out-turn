@@ -104,8 +104,8 @@ MonoBehaviour:
   indicatorsWhichChanged: 0000000001000000
   statesOfChangedIndicators: 0000000000000000
   addedNumbers:
-  - 0.2
   - -0.2
+  - 0.2
 --- !u!1 &472691889685716718
 GameObject:
   m_ObjectHideFlags: 0

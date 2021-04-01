@@ -9,7 +9,7 @@ public class CardGravity : MonoBehaviour
     private Vector3 offset;
     private Vector3 defaultPosition;
     private float zRotation;
-    private bool isCardAtDefaultPosition = true;
+    private bool isCardDragging = false;
     private bool isChoiceLeft;
 
     private void Start()
@@ -19,13 +19,13 @@ public class CardGravity : MonoBehaviour
 
     private void Update()
     {
-        if (isCardAtDefaultPosition)
+        if (!isCardDragging)
             ReturnToDefaultPosition();
     }
 
     private void OnMouseDown()
     {
-        isCardAtDefaultPosition = false;
+        isCardDragging = true;
 
         offset = transform.position - 
             Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f));
@@ -46,7 +46,7 @@ public class CardGravity : MonoBehaviour
 
     private void OnMouseUp()
     {
-        isCardAtDefaultPosition = true;
+        isCardDragging = false;
 
         if (Mathf.Abs(zRotation) >= 7.5f)
             cardIndividuality.ConfirmChoice(isChoiceLeft);

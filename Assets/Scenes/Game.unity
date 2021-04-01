@@ -1108,6 +1108,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
+    - target: {fileID: 3822728193914700775, guid: f79b8c07c2809204089d2f23a65c42dd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f79b8c07c2809204089d2f23a65c42dd, type: 3}
 --- !u!224 &1354654103 stripped

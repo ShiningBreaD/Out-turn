@@ -6,7 +6,7 @@ public class Indicator : MonoBehaviour
     [SerializeField] private Image changeSign;
     [SerializeField] private Image filler;
 
-    [SerializeField] private bool isAnimationRun;
+    private bool isAnimationRun;
     private float totalValueOfFiller;
 
     public enum changeSignState { small = 0, large = 1 }
