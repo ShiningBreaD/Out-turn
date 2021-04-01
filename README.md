@@ -1,2 +1,2 @@
 # Out-turn
-2d android game about manufacturing control
+This is a dev branch, it was created to test some new features of the app
