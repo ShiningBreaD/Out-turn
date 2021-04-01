@@ -58,11 +58,17 @@ public class CardInteractionManager : MonoBehaviour
         {
             rightSwipeChoice.color = new Color(leftSwipeChoice.color.r, leftSwipeChoice.color.g, leftSwipeChoice.color.b, Mathf.Abs(degreeOfVisibility));
             leftSwipeChoice.color = new Color(leftSwipeChoice.color.r, leftSwipeChoice.color.g, leftSwipeChoice.color.b, 0);
+
+            Outline outline = rightSwipeChoice.GetComponent<Outline>();
+            outline.effectColor = new Color(outline.effectColor.r, outline.effectColor.g, outline.effectColor.b, Mathf.Abs(degreeOfVisibility));
         }
         else
         {
-            leftSwipeChoice.color = new Color(leftSwipeChoice.color.r, leftSwipeChoice.color.g, leftSwipeChoice.color.b, degreeOfVisibility);
+            leftSwipeChoice.color = new Color(leftSwipeChoice.color.r, leftSwipeChoice.color.g, leftSwipeChoice.color.b, degreeOfVisibility); ;
             rightSwipeChoice.color = new Color(leftSwipeChoice.color.r, leftSwipeChoice.color.g, leftSwipeChoice.color.b, 0);
+
+            Outline outline = rightSwipeChoice.GetComponent<Outline>();
+            outline.effectColor = new Color(outline.effectColor.r, outline.effectColor.g, outline.effectColor.b, degreeOfVisibility);
         }
     }
 
