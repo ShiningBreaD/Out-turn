@@ -306,7 +306,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 3
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -464,7 +464,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 5
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -527,3 +527,4 @@ MonoBehaviour:
   rightSwipeChoice: {fileID: 3822728193677224980}
   description: {fileID: 3822728193367763960}
   speakerName: {fileID: 3822728192365979293}
+  npc: {fileID: 3822728192638136572}

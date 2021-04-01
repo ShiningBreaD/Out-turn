@@ -9,6 +9,7 @@ public class CardInteractionManager : MonoBehaviour
     public Text leftSwipeChoice, rightSwipeChoice;
     public Text description;
     public Text speakerName;
+    public Image npc;
 
     private void Start()
     {

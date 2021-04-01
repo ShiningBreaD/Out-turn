@@ -6,7 +6,16 @@ public class Indicator : MonoBehaviour
     [SerializeField] private Image changeSign;
     [SerializeField] private Image filler;
 
+    [SerializeField] private bool isAnimationRun;
+    private float totalValueOfFiller;
+
     public enum changeSignState { small = 0, large = 1 }
+
+    private void Update()
+    {
+        if (isAnimationRun)
+            Animate();
+    }
 
     public void SetChangeSign(float degreeOfVisibility, changeSignState state)
     {
@@ -20,6 +29,14 @@ public class Indicator : MonoBehaviour
 
     public void SetFiller(float addNumber)
     {
-        filler.fillAmount += addNumber;
+        totalValueOfFiller = filler.fillAmount + addNumber;
+        isAnimationRun = true;
+    }
+
+    private void Animate()
+    {
+        filler.fillAmount = Mathf.Lerp(filler.fillAmount, totalValueOfFiller, Time.deltaTime * 3);
+        if (Mathf.Approximately(filler.fillAmount, totalValueOfFiller))
+            isAnimationRun = false;
     }
 }
