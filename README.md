@@ -1,5 +1,5 @@
 # Out-turn
-Out-turn is simple 2D Unity game about manufacturing control. 
+Out-turn is simple 2D Unity reigns-like game about manufacturing control. 
 This game was made for a hackathon in 2 days.
 
 # The idea
